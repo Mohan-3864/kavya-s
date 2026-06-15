@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KAVYA Lucky Coin</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    text-align:center;
+
+    background-image:url('Background.png');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+
+    width:90%;
+    max-width:600px;
+
+    background:rgba(255,255,255,0.85);
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:0 0 25px rgba(0,0,0,0.3);
+}
+
+h1{
+    color:#0057b8;
+    margin-bottom:20px;
+}
+
+.coin{
+    width:250px;
+    height:250px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    transition:transform 2s ease;
+
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+
+    object-fit:cover;
+}
+
+.flip{
+    transform:rotateY(2160deg);
+}
+
+button{
+
+    padding:12px 25px;
+
+    font-size:18px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    margin:10px;
+}
+
+.flipBtn{
+    background:#0057b8;
+    color:white;
+}
+
+.playBtn{
+    background:#28a745;
+    color:white;
+}
+
+#result{
+
+    margin-top:25px;
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    color:#d35400;
+
+    min-height:50px;
+}
+
+@media(max-width:768px){
+
+    .coin{
+        width:180px;
+        height:180px;
+    }
+
+    #result{
+        font-size:26px;
+    }
+
+    h1{
+        font-size:26px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎉 JAI KAPEES INFRACON Lucky Coin 🎉</h1>
+
+<img src="Coin.png" id="coin" class="coin">
+
+<br><br>
+
+<button class="flipBtn" onclick="flipCoin()">
+Flip Coin
+</button>
+
+<button class="playBtn" onclick="playAgain()">
+Play Again
+</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function flipCoin(){
+
+    let coin = document.getElementById("coin");
+
+    coin.style.pointerEvents = "none";
+
+    coin.classList.add("flip");
+
+    setTimeout(function(){
+
+        const prizes = [50,60,70,80,90,100];
+
+        let amount =
+        prizes[Math.floor(Math.random()*prizes.length)];
+
+        document.getElementById("result").innerHTML =
+        "🎁 Congratulations! You Won ₹" +
+        amount +
+        "Amount";
+
+        coin.classList.remove("flip");
+
+        coin.style.pointerEvents = "auto";
+
+    },2000);
+}
+
+function playAgain(){
+
+    document.getElementById("result").innerHTML = "";
+
+}
+
+</script>
+
+</body>
+</html>
